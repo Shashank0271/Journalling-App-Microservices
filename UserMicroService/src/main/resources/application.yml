@@ -1,0 +1,16 @@
+logging:
+  level:
+    com:
+      usermicroservice:
+        UserMicroService: TRACE
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/journalappdb
+    username: shashank
+    password: 62305
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: postgresql
+    show-sql: true

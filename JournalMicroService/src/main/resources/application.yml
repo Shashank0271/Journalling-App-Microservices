@@ -1,0 +1,18 @@
+logging:
+  level:
+    com:
+      journalmicroservice:
+        JournalMicroService: TRACE
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/journalappdb
+    username: shashank
+    password: 62305
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    database: postgresql
+    show-sql: true
+server:
+  port: 8082
