@@ -14,5 +14,9 @@ spring:
       ddl-auto: create-drop
     database: postgresql
     show-sql: true
+  servlet:
+    multipart:
+      enabled: true
+
 server:
   port: 8082

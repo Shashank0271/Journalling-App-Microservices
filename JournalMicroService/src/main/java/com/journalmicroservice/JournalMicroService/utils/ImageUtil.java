@@ -1,0 +1,41 @@
+package com.journalmicroservice.JournalMicroService.utils;
+
+import java.io.ByteArrayOutputStream;
+import java.util.zip.DataFormatException;
+import java.util.zip.Deflater;
+import java.util.zip.Inflater;
+
+public class ImageUtil {
+    public static byte[] compress(byte[] input) {
+        Deflater deflater = new Deflater();
+        deflater.setLevel(Deflater.BEST_COMPRESSION);
+        deflater.setInput(input);
+        deflater.finish();
+
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream(input.length);
+        byte[] temp = new byte[4 * 1024]; //4kb array
+
+        while (!deflater.finished()) {
+            int compressedBytes = deflater.deflate(temp); //the compressed bytes are being written in temp
+            byteArrayOutputStream.write(temp, 0, compressedBytes);
+        }
+
+        return byteArrayOutputStream.toByteArray();
+    }
+
+    public static byte[] uncompress(byte[] input) throws DataFormatException {
+        Inflater inflater = new Inflater();
+
+        inflater.setInput(input);
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        byte[] temp = new byte[1024];
+
+        while (!inflater.finished()) {
+            int decompressedBytes = inflater.inflate(temp);
+            outputStream.write(temp, 0, decompressedBytes);
+        }
+
+        return outputStream.toByteArray();
+    }
+
+}
