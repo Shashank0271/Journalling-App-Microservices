@@ -24,4 +24,9 @@ public class JournalController {
         return new ResponseEntity<>(journalService.createEntry(images, userName, content), HttpStatus.CREATED);
     }
 
+    @GetMapping("{journalEntryId}")
+    public ResponseEntity<JournalEntry> getEntry(@PathVariable int journalEntryId) {
+        return new ResponseEntity<>(journalService.getEntry(journalEntryId), HttpStatus.OK);
+    }
+
 }

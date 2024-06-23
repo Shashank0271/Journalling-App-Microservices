@@ -22,7 +22,7 @@ public class Image {
     @SequenceGenerator(name = "image_seq_gen", sequenceName = "image_seq")
     @Column(name = "image_id")
     private long imageId;
-    private long size; // in bytes
+    private long sizeInBytes; // in bytes
     @Lob
     @Column(name = "image")
     private byte[] image;

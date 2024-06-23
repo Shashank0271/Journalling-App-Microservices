@@ -31,3 +31,4 @@ build/
 
 ### VS Code ###
 .vscode/
+/home/shashank/Downloads/MicroServicesJounalingApp/JournalMicroService/src/main/resources/application.yml
