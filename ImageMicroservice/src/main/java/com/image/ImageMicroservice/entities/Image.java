@@ -32,5 +32,5 @@ public class Image {
     private Long userId;
 
     @Column(nullable = true, name = "journal_entry_id")
-    private Long journalEntryId;
+    private String journalEntryId;
 }

@@ -5,11 +5,11 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class EntryNotFoundException extends RuntimeException {
-    private long entryId;
+public class JournalEntryNotFoundException extends RuntimeException {
+    private String entryId;
     private String message;
 
-    public EntryNotFoundException(long entryId) {
+    public JournalEntryNotFoundException(String entryId) {
         this.entryId = entryId;
         this.message = "Entry with Id = " + entryId + " not found";
     }

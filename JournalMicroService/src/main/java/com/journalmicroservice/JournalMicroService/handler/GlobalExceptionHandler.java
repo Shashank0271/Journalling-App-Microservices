@@ -1,6 +1,6 @@
 package com.journalmicroservice.JournalMicroService.handler;
 
-import com.journalmicroservice.JournalMicroService.Exceptions.EntryNotFoundException;
+import com.journalmicroservice.JournalMicroService.Exceptions.JournalEntryNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -17,8 +17,8 @@ public class GlobalExceptionHandler {
 
     private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
-    @ExceptionHandler(EntryNotFoundException.class)
-    public ResponseEntity<Map<String, ?>> handleUserNotFoundException(EntryNotFoundException entryNotFoundException) {
+    @ExceptionHandler(JournalEntryNotFoundException.class)
+    public ResponseEntity<Map<String, ?>> handleUserNotFoundException(JournalEntryNotFoundException entryNotFoundException) {
         logger.trace(entryNotFoundException.getMessage());
         return new ResponseEntity<>(
                 new LinkedHashMap<>() {{

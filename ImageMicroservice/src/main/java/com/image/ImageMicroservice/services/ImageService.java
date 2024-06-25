@@ -4,6 +4,8 @@ import com.image.ImageMicroservice.entities.Image;
 import com.image.ImageMicroservice.entities.ImageCat;
 import com.image.ImageMicroservice.repository.ImageRepository;
 import com.image.ImageMicroservice.utils.ImageUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,12 +18,12 @@ import java.util.zip.DataFormatException;
 
 @Service
 public class ImageService {
-
+    private static final Logger logger = LoggerFactory.getLogger(ImageService.class);
     @Autowired
     private ImageRepository imageRepository;
 
     public List<Image> createJournalEntryImages(List<MultipartFile> images,
-                                                long journalEntryId
+                                                String journalEntryId
     ) {
         List<Image> storedImages = new ArrayList<>();
         images.forEach(imageFile -> {
@@ -60,8 +62,9 @@ public class ImageService {
     }
 
     @Transactional
-    public List<Image> getAllImagesForJournalEntry(long journalEntryId) {
+    public List<Image> getAllImagesForJournalEntry(String journalEntryId) {
         List<Image> images = imageRepository.findByJournalEntryId(journalEntryId);
+        logger.debug("images for Journal Entry ID {} \t\t\t {}", journalEntryId, images);
         images.forEach(image -> {
             try {
                 byte[] uncompressedImage = ImageUtil.unCompressImage(image.getImage());

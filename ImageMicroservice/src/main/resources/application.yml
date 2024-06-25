@@ -1,6 +1,12 @@
 server:
   port: 9000
 
+logging:
+  level:
+    com:
+      image:
+        ImageMicroservice: TRACE
+
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/journalappdb
@@ -9,7 +15,7 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: create-drop
     database: postgresql
     show-sql: true
 
