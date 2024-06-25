@@ -19,14 +19,19 @@ public class JournalController {
     @PostMapping
     public ResponseEntity<JournalEntry> createEntry(@RequestPart(required = false, name = "images") List<MultipartFile> images,
                                                     @RequestParam(name = "userName") String userName,
+                                                    @RequestParam(name = "userId") int userId,
                                                     @RequestParam(name = "content") String content
     ) {
-        return new ResponseEntity<>(journalService.createEntry(images, userName, content), HttpStatus.CREATED);
+        return new ResponseEntity<>(journalService.createEntry(images, userName, userId, content), HttpStatus.CREATED);
     }
 
     @GetMapping("{journalEntryId}")
-    public ResponseEntity<JournalEntry> getEntry(@PathVariable int journalEntryId) {
+    public ResponseEntity<JournalEntry> getEntryByEntryId(@PathVariable int journalEntryId) {
         return new ResponseEntity<>(journalService.getEntry(journalEntryId), HttpStatus.OK);
     }
 
+    @GetMapping("user/{userId}")
+    public ResponseEntity<List<JournalEntry>> getEntriesByUserId(@PathVariable int userId) {
+        return new ResponseEntity<>(journalService.getEntriesByUserId(userId), HttpStatus.OK);
+    }
 }

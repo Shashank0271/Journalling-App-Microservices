@@ -6,6 +6,8 @@
       <list>
         <option value="$PROJECT_DIR$/UserMicroService/pom.xml" />
         <option value="$PROJECT_DIR$/JournalMicroService/pom.xml" />
+        <option value="$PROJECT_DIR$/ServiceRegistry/pom.xml" />
+        <option value="$PROJECT_DIR$/ImageMicroservice/pom.xml" />
       </list>
     </option>
   </component>

@@ -1,0 +1,31 @@
+logging:
+  level:
+    com:
+      journalmicroservice:
+        JournalMicroService: TRACE
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/journalappdb
+    username: shashank
+    password: shashank
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    database: postgresql
+    show-sql: true
+  servlet:
+    multipart:
+      enabled: true
+
+server:
+  port: 8082
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
