@@ -1,6 +1,5 @@
-package com.journalmicroservice.JournalMicroService.entities;
+package com.image.ImageMicroservice.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,17 +12,25 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class Image {
-    @ManyToOne
-    @JoinColumn(name = "entry_id")
-    @JsonBackReference
-    JournalEntry journalEntry;
     @Id
     @GeneratedValue(generator = "image_seq_gen", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "image_seq_gen", sequenceName = "image_seq")
     @Column(name = "image_id")
     private long imageId;
+
     private long sizeInBytes; // in bytes
+
     @Lob
     @Column(name = "image")
     private byte[] image;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "image_cat")
+    private ImageCat imageCategory;
+
+    @Column(nullable = true, name = "user_id")
+    private Long userId;
+
+    @Column(nullable = true, name = "journal_entry_id")
+    private Long journalEntryId;
 }

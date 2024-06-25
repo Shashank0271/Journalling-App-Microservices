@@ -1,4 +1,4 @@
-package com.journalmicroservice.JournalMicroService.utils;
+package com.image.ImageMicroservice.utils;
 
 import java.io.ByteArrayOutputStream;
 import java.util.zip.DataFormatException;
@@ -6,7 +6,8 @@ import java.util.zip.Deflater;
 import java.util.zip.Inflater;
 
 public class ImageUtil {
-    public static byte[] compress(byte[] input) {
+
+    public static byte[] compressImage(byte[] input) {
         Deflater deflater = new Deflater();
         deflater.setLevel(Deflater.BEST_COMPRESSION);
         deflater.setInput(input);
@@ -23,7 +24,7 @@ public class ImageUtil {
         return byteArrayOutputStream.toByteArray();
     }
 
-    public static byte[] uncompress(byte[] input) throws DataFormatException {
+    public static byte[] unCompressImage(byte[] input) throws DataFormatException {
         Inflater inflater = new Inflater();
 
         inflater.setInput(input);
@@ -37,5 +38,4 @@ public class ImageUtil {
 
         return outputStream.toByteArray();
     }
-
 }
